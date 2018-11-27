@@ -29,7 +29,7 @@ public class UserController  extends BaseController {
      * @return
      */
     @ApiOperation(value = "查询用户列表")
-    @RequestMapping(value = "/userList", method = RequestMethod.GET)
+    @GetMapping("/userList")
     public Map<String, Object> userList(){
         List<User> users = userRepository.findAll();
         logger.info("users: {}", users);
@@ -39,15 +39,17 @@ public class UserController  extends BaseController {
     }
 
     @ApiOperation(value = "查询用户权限")
-    @RequestMapping(value = "/authorityList", method = RequestMethod.GET)
+    @GetMapping("/authorityList")
     public List<String> authorityList(){
         List<String> authentication = getAuthentication();
         return authentication;
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    @ApiOperation(value = "更新用户信息")
+    @PutMapping("/{id}")
     public ResponseEntity<Object> update(@PathVariable("id") String id, User user){
         update.updateUser(id, user);
         return new ResponseEntity<>("Update is successfully",HttpStatus.OK);
     }
+
 }

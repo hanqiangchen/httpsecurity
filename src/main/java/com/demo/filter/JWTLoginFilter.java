@@ -60,7 +60,7 @@ public class JWTLoginFilter extends UsernamePasswordAuthenticationFilter {
             // 设置过期时间
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(new Date());
-            calendar.add(Calendar.SECOND, 60);
+            calendar.add(Calendar.SECOND, 600);
             Date time = calendar.getTime();
             token = Jwts.builder().setSubject(auth.getName() + "-" + roleList)
                     .setExpiration(time).signWith(SignatureAlgorithm.HS512, ConstantKey.SIGNING_KEY).compact();

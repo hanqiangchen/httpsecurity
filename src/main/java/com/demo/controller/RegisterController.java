@@ -4,10 +4,7 @@ import com.demo.entity.User;
 import com.demo.exception.UsernameIsExitedException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by hanqiang.chen on 11/27/2018.
@@ -22,7 +19,7 @@ public class RegisterController extends BaseController {
      * @param user
      */
     @ApiOperation(value = "注册用户")
-    @RequestMapping(value = "/signup", method = RequestMethod.POST)
+    @PostMapping("/signup")
     public User signup(@RequestBody User user) {
         User bizUser = userRepository.findByUsername(user.getUsername());
         //User bizuser = userRepository.findByUsername(user.getEmail());
