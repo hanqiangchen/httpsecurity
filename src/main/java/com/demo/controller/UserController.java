@@ -1,11 +1,14 @@
 package com.demo.controller;
 
 import com.demo.entity.User;
+import com.demo.repository.Update;
+import com.demo.repository.UserRepository;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -19,6 +22,8 @@ import java.util.Map;
 @Api(value = "用户管理", description = "用户管理")
 public class UserController  extends BaseController {
 
+    @Autowired
+    Update update;
     /**
      * 获取用户列表
      * @return
@@ -40,4 +45,9 @@ public class UserController  extends BaseController {
         return authentication;
     }
 
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Object> update(@PathVariable("id") String id, User user){
+        update.updateUser(id, user);
+        return new ResponseEntity<>("Update is successfully",HttpStatus.OK);
+    }
 }

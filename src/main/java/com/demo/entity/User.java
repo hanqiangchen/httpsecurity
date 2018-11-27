@@ -13,14 +13,17 @@ import javax.persistence.Table;
 public class User {
     @Id
     @GeneratedValue
-    private long id;
+    private String id;
     private String username;
     private String password;
     private String email;
     private String name;
 
-    public long getId() {
+    public String getId() {
         return id;
+    }
+    public void setId(String id){
+        this.id = id;
     }
 
     public String getUsername() {
