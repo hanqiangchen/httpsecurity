@@ -1,5 +1,6 @@
 package com.demo.controller;
 
+import com.demo.repository.Update;
 import com.demo.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,6 +26,9 @@ public abstract class BaseController {
 
     @Autowired
     protected BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    @Autowired
+    Update update;
 
     /**
      * 获取用户所拥有的权限列表

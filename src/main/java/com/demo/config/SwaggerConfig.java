@@ -55,7 +55,7 @@ public class SwaggerConfig {
                 "Some custom description of API.",
                 "API TOS",
                 "Terms of service",
-                new Contact("Chen Hanqiang", "www.baidu.com", "936334951@.com"),
+                new Contact("Chen Hanqiang", "www.baidu.com", "936334951@qq.com"),
                 "License of API", "API license URL", Collections.emptyList());
     }
 }

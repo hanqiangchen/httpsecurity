@@ -23,7 +23,7 @@ import java.util.List;
 public class LoginController  extends BaseController {
 
     @ApiOperation(value = "自定义登录")
-    @RequestMapping(value = "/login", method = {RequestMethod.GET})
+    @RequestMapping(value = "/login", method = {RequestMethod.POST})
     public void login(String username, String password, HttpServletResponse response) {
         User userVo = userRepository.findByUsername(username);
         if (userVo != null) {

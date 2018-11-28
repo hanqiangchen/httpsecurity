@@ -22,8 +22,6 @@ import java.util.Map;
 @Api(value = "用户管理", description = "用户管理")
 public class UserController  extends BaseController {
 
-    @Autowired
-    Update update;
     /**
      * 获取用户列表
      * @return
@@ -47,7 +45,7 @@ public class UserController  extends BaseController {
 
     @ApiOperation(value = "更新用户信息")
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@PathVariable("id") String id, User user){
+    public ResponseEntity<Object> update(@PathVariable("id") String id,@RequestBody User user){
         update.updateUser(id, user);
         return new ResponseEntity<>("Update is successfully",HttpStatus.OK);
     }
