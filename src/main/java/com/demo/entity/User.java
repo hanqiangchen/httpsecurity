@@ -9,7 +9,7 @@ import javax.persistence.Table;
  * Created by hanqiang.chen on 11/27/2018.
  */
 @Entity
-@Table(name = "tb_user")
+@Table(name = "tb_user1")
 public class User {
     @Id
     @GeneratedValue

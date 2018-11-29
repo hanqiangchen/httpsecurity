@@ -3,13 +3,15 @@ package com.demo.controller;
 import com.demo.entity.User;
 import com.demo.repository.Update;
 import com.demo.repository.UserRepository;
+import com.demo.service.UpdateSeviceImp;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,9 +47,14 @@ public class UserController  extends BaseController {
 
     @ApiOperation(value = "更新用户信息")
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@PathVariable("id") String id,@RequestBody User user){
-        update.updateUser(id, user);
-        return new ResponseEntity<>("Update is successfully",HttpStatus.OK);
+    public User update(@PathVariable("id") String id,
+                                         @RequestBody User user){
+        Map<String, User> userHashMap = new HashMap<>();
+        userHashMap.remove(id);
+        user.setId(id);
+        userHashMap.put(id, user);
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        return update.save(user);
     }
 
 }

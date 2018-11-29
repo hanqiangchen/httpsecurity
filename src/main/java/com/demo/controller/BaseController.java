@@ -2,6 +2,7 @@ package com.demo.controller;
 
 import com.demo.repository.Update;
 import com.demo.repository.UserRepository;
+import com.demo.service.UpdateSeviceImp;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,10 +26,12 @@ public abstract class BaseController {
     protected UserRepository userRepository;
 
     @Autowired
-    protected BCryptPasswordEncoder bCryptPasswordEncoder;
+    protected Update update;
 
     @Autowired
-    Update update;
+    protected BCryptPasswordEncoder bCryptPasswordEncoder;
+
+
 
     /**
      * 获取用户所拥有的权限列表
